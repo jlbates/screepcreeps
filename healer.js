@@ -1,3 +1,4 @@
+// Healder
 module.exports = function (creep) {
     var damagedCreep = creep.pos.findClosestByPath(Game.MY_CREEPS, {
         filter: function(object) {

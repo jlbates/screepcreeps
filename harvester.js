@@ -1,3 +1,4 @@
+// Harvester
 module.exports = function (creep) {
    
     if(creep.carry.energy < creep.carryCapacity) {

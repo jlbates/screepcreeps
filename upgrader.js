@@ -1,3 +1,4 @@
+// Upgrader
 module.exports = function (creep) {
     if(creep.carry.energy == 0) {
         var sources = creep.room.find(FIND_SOURCES);

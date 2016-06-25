@@ -1,3 +1,4 @@
+// Basic builder
 module.exports = function (creep) {
 	if(creep.memory.building && creep.carry.energy == 0) {
             creep.memory.building = false;

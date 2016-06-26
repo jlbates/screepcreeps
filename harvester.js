@@ -1,6 +1,6 @@
 // Harvester
 module.exports = function (creep) {
-   
+
     if(creep.carry.energy < creep.carryCapacity) {
         var sources = creep.room.find(FIND_SOURCES);
         if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
@@ -14,6 +14,7 @@ module.exports = function (creep) {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
                             structure.structureType == STRUCTURE_SPAWN ||
+                            structure.structureType == STRUCTURE_STORAGE ||
                             structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                 }
         });

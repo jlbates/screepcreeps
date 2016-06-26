@@ -15,6 +15,17 @@ var upgraders = [];
 var archers = [];
 
 /* --------------------------------------------------------------------------------------SPAWNER STUFF--------------------------------------------------------------------------------*/
+//Clear dead creeps from memory
+console.log('------------------------------Gravedigger--------------------------------------------------------');
+for(var name in Memory.creeps) {
+    if(!Game.creeps[name]) {
+        delete Memory.creeps[name];
+        console.log('Clearing non-existing creep memory:', name);
+    }
+}
+console.log('\n');
+
+
 
 //Gather units into identifiable groups.
 for (var i in Game.creeps) {
@@ -38,48 +49,55 @@ for (var i in Game.creeps) {
     }
 }
 
+
 //Logs total units to the console.
-console.log('Harvesters =' + harvesters.length + ' , Builders =' + builders.length + ' , Guards =' + guards.length + ' , Healers =' + healers.length + ' , Upgraders =' + upgraders.length + ' , Archers =' + archers.length)
+console.log('------------------------------Unit Count--------------------------------------------------------');
+console.log('Harvesters =' + harvesters.length + ' , Builders =' + builders.length + ' , Guards =' + guards.length + ' , Healers =' + healers.length + ' , Upgraders =' + upgraders.length + ' , Archers =' + archers.length);
+console.log('\n');
+console.log('------------------------------Building Units--------------------------------------------------------');
 
 // Spawn Harvesters
-if(harvesters.length < 4) {
-    Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE], null, {role: 'harvester'});
+if(harvesters.length < 8) {
+    Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE], null, {role: 'harvester'});
+    console.log('Constructing an harvester');
 }
 // Spawn upgraders
-if(upgraders.length < 2) {
-    Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
+if(upgraders.length < 3) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
+    console.log('Constructing an upgrader');
 }
 // Spawn builders
-if(builders.length < 2) {
-    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], null, {role: 'builder'});
+if(builders.length < 8) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'builder'});
+    console.log('Constructing an builder');
 }
+// // Spawn archers
+// if(archers.length < 1) {
+//     Game.spawns.Spawn1.createCreep([RANGED_ATTACK, MOVE], null, {role: 'archer'});
+//     console.log('Constructing an archer');
+// }
 
-// Spawn guards and healers
-if ((guards.length + healers.length) / harvesters.length < 0.8) {
-    if (guards.length < 4) {
-        Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
-    } 
-    else if (healers.length / guards.length < 0.5) {
-        Game.spawns.Spawn1.createCreep([HEAL, MOVE, TOUGH], null, {role: 'healer'});
-    } 
-    else {
-        Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
-    }
-} 
-    // else {
-    //     console.log('hi')
-    //     Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE], null, {role: 'harvester'});
-        
-    // }
+// // Spawn guards and healers
+// if ((guards.length + healers.length) / harvesters.length < 0.8) {
+//     if (guards.length < 4) {
+//         Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
+//         console.log('Constructing an guard');
+//     } 
+//     else if (healers.length / guards.length < 0.5) {
+//         Game.spawns.Spawn1.createCreep([HEAL, MOVE], null, {role: 'healer'});
+//         console.log('Constructing an healer');
+//     } 
+//     else {
+//         Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
+//         console.log('Constructing an guard because maxed we hit 50% of guard to healer ratio');
+//     }
+// } 
 
-// Spawn archers
-if(archers.length < 2) {
-    Game.spawns.Spawn1.createCreep([RANGED_ATTACK, RANGED_ATTACK, TOUGH, MOVE], null, {role: 'archer'});
-}
-
+console.log('\n');
 /* ---------------------------------------------------------------------------------------CREEP BAHAVIOR ---------------------------------------------------------------------*/
 
 //Assign behavior based on creep role.
+console.log('------------------------------Unit Chatter--------------------------------------------------------');
 for(var name in Game.creeps) {
 	var creep = Game.creeps[name];
 
@@ -107,3 +125,4 @@ for(var name in Game.creeps) {
 	    archer(creep);
     }
 }
+

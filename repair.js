@@ -1,7 +1,7 @@
 // Basic Repair bot
 module.exports = function (creep) {
 
-    if(creep.carry.energy < creep.carryCapacity && creep.carry.energy = 0) {
+    if(creep.carry.energy < creep.carryCapacity && creep.carry.energy == 0) {
         var sources = creep.room.find(FIND_SOURCES);
         if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
             creep.moveTo(sources[0]);
@@ -20,7 +20,7 @@ module.exports = function (creep) {
         if(targets.length > 0) {
             if(creep.repair(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[0]);
-                console.log(creep.name + ': Repairing ' + target[0]);
+                console.log(creep.name + ': Repairing ' + targets[0]);
             }
         }
     }

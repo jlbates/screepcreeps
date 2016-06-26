@@ -17,7 +17,6 @@ var archers = [];
 /* --------------------------------------------------------------------------------------SPAWNER STUFF--------------------------------------------------------------------------------*/
 //Clear dead creeps from memory
 console.log('------------------------------Gravedigger--------------------------------------------------------');
-console.log(Game.HOSTILE_CREEPS);
 for(var name in Memory.creeps) {
     if(!Game.creeps[name]) {
         delete Memory.creeps[name];

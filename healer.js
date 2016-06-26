@@ -1,31 +1,23 @@
 // Healder
 module.exports = function (creep) {
-    var damagedCreep = creep.pos.findClosestByPath(Game.MY_CREEPS, {
-        filter: function(object) {
-            return object !== creep && object.hits < object.hitsMax;
-        }
-    });
-    if (creep.hits < creep.hitsMax - 100 /* no more heal */) {
-    	creep.moveTo(Game.spawns.Spawn1);
-    	creep.heal(damagedCreep);
-    	return;
-    }
-    
-    if(damagedCreep) {
-    	creep.moveTo(damagedCreep);
-    	creep.heal(damagedCreep);
-    	return;
-    }
-    
-    var guard = creep.pos.findClosestByPath(Game.MY_CREEPS, {
-        filter: function(creep) {
-	        return creep.memory.role === 'guard';
-        }
-    });
-    if (guard) {
-    	creep.moveTo(guard);
-    } else {
-    	creep.moveTo(Game.spawns.Spawn1);
-    	creep.heal(damagedCreep);
-    }
+
+
+    //Find my creeps that are hurt. If they're hurt, heal them.
+		//If there aren't any hurt, we're going to try and get the healers
+		//to tick near the guards, so that they're close by when the battle starts
+		var target = creep.pos.findNearest(Game.MY_CREEPS, {
+			filter: function(t)
+			{
+				return t.hits < t.hitsMax
+			}
+		});
+
+		if(target)
+		{
+			creep.moveTo(target);
+			creep.heal(target);
+		}
+		else {
+			creep.moveTo(Game.spawns.Spawn1);
+		}
 }

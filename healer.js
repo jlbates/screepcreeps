@@ -12,10 +12,10 @@ module.exports = function (creep) {
 			}
 		});
 
-		if(target)
-		{
+		if(target){
 			creep.moveTo(target);
 			creep.heal(target);
+      console.log(creep.name + ': healing ' + target);
 		}
 		else {
 			creep.moveTo(Game.spawns.Spawn1);

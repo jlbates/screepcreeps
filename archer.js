@@ -4,6 +4,7 @@ module.exports = function (creep) {
 	if(targets) {
 		creep.moveTo(targets[0]);
 		creep.rangedAttack(targets[0]);
+		console.log(creep.name + ': Shooting at ' + targets[0]);
 	}
 	else {
 		creep.moveTo(Game.spawns.Spawn1);

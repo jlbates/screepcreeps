@@ -5,7 +5,7 @@ var harvester = require('harvester');
 var healer = require('healer');
 var upgrader = require('upgrader');
 var archer = require('archer');
-var repair = require('repair.js');
+var repair = require('repair');
 
 //Unit
 var harvesters = [];

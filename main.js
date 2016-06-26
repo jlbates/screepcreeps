@@ -5,6 +5,7 @@ var harvester = require('harvester');
 var healer = require('healer');
 var upgrader = require('upgrader');
 var archer = require('archer');
+var repair = require('repair');
 
 //Unit
 var harvesters = [];
@@ -13,6 +14,7 @@ var builders = [];
 var healers = [];
 var upgraders = [];
 var archers = [];
+var repairs = [];
 
 /* --------------------------------------------------------------------------------------SPAWNER STUFF--------------------------------------------------------------------------------*/
 //Clear dead creeps from memory
@@ -47,12 +49,15 @@ for (var i in Game.creeps) {
     if(Game.creeps[i].memory.role == 'archer') {
         archers.push(Game.creeps[i]);
     }
+    if(Game.creeps[i].memory.role == 'repair') {
+        repairs.push(Game.creeps[i]);
+    }
 }
 
 
 //Logs total units to the console.
 console.log('------------------------------Unit Count--------------------------------------------------------');
-console.log('Harvesters =' + harvesters.length + ' , Builders =' + builders.length + ' , Guards =' + guards.length + ' , Healers =' + healers.length + ' , Upgraders =' + upgraders.length + ' , Archers =' + archers.length);
+console.log('Harvesters =' + harvesters.length + ' , Builders =' + builders.length + ' , Guards =' + guards.length + ' , Healers =' + healers.length + ' , Upgraders =' + upgraders.length + ' , Archers =' + archers.length+ ' , Repairs =' + repairs.length);
 console.log('\n');
 console.log('------------------------------Building Units--------------------------------------------------------');
 
@@ -70,6 +75,12 @@ if(upgraders.length < 3) {
 if(builders.length < 8) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'builder'});
     console.log('Constructing an builder');
+}
+
+// Spawn repairs
+if(repairs.length < 2) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'repair'});
+    console.log('Constructing an repair dude');
 }
 // // Spawn archers
 // if(archers.length < 1) {
@@ -123,5 +134,9 @@ for(var name in Game.creeps) {
 
     if(creep.memory.role == 'archer') {
 	    archer(creep);
+    }
+
+    if(creep.memory.role == 'repair') {
+	    repair(creep);
     }
 }

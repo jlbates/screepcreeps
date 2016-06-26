@@ -58,7 +58,7 @@ console.log('------------------------------Building Units-----------------------
 
 // Spawn Harvesters
 if(harvesters.length < 8) {
-    Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE], null, {role: 'harvester'});
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'harvester'});
     console.log('Constructing an harvester');
 }
 // Spawn upgraders

@@ -40,7 +40,6 @@ module.exports = function(creep) {
     if (damagedRamparts.length > 0) {
         creep.moveTo(damagedRamparts[0]);
         creep.repair(damagedRamparts[0]);
-
         return;
     }
 
@@ -56,6 +55,7 @@ module.exports = function(creep) {
         var structure = toRepair[0];
         creep.moveTo(structure);
         creep.repair(structure);
+        console.log(creep.name + ': Repairing ' + structure);
         return;
     }
 

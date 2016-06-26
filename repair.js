@@ -2,7 +2,7 @@
 module.exports = function(creep) {
     // Returns false if carried energy is zero
     if (creep.memory.repairing && creep.carry.energy == 0) {
-        creep.memory.upgrading = false;
+        creep.memory.repairing = false;
     }
     //Returns true if carrying max energy
     if (!creep.memory.repairing && creep.carry.energy == creep.carryCapacity) {

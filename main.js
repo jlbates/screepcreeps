@@ -67,7 +67,7 @@ if(harvesters.length < 8) {
     console.log('Constructing an harvester');
 }
 // Spawn upgraders
-if(upgraders.length < 4) {
+if(upgraders.length < 6) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
     console.log('Constructing an upgrader');
 }

@@ -72,7 +72,7 @@ if(upgraders.length < 3) {
     console.log('Constructing an upgrader');
 }
 // Spawn builders
-if(builders.length < 8) {
+if(builders.length < 6) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'builder'});
     console.log('Constructing an builder');
 }

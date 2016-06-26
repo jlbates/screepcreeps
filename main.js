@@ -62,18 +62,18 @@ console.log('\n');
 console.log('------------------------------Building Units--------------------------------------------------------');
 
 // Spawn Harvesters
-if(7) {
-    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'harvester'});
+if(harvesters.length < 8) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], null, {role: 'harvester'});
     console.log('Constructing an harvester');
 }
 // Spawn upgraders
 if(upgraders.length < 4) {
-    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
     console.log('Constructing an upgrader');
 }
 // Spawn builders
 if(builders.length <6) {
-    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'builder'});
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], null, {role: 'builder'});
     console.log('Constructing an builder');
 }
 

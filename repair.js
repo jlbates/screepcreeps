@@ -12,9 +12,9 @@ module.exports = function(creep) {
     //         closestSpawn.transferEnergy(creep);
     //     }
     // }
-    if(creep.carry.energy < creep.carryCapacity) {
+    if (creep.carry.energy < creep.carryCapacity) {
         var sources = creep.room.find(FIND_SOURCES);
-        if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
+        if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
             creep.moveTo(sources[1]);
             console.log(creep.name + ': Gathering repair energy');
         }
@@ -23,33 +23,35 @@ module.exports = function(creep) {
     //First, we're going to check for damaged ramparts. We're using ramparts as the first line of defense
     //and we want them nicely maintained. This is especially important when under attack. The builder will
     //repair the most damaged ramparts first
-    var structures = creep.room.find(Game.STRUCTURES);
-    var damagedRamparts = [];
-
-    for (var index in structures) {
-        var structure = structures[index];
-        if (structure.structureType == 'rampart' && structure.hits < (structure.hitsMax - 50)) {
-            damagedRamparts.push(structure);
-        }
-    }
-
-    damagedRamparts.sort(function(a, b) {
-        return (a.hits - b.hits);
-    });
-
-    if (damagedRamparts.length > 0) {
-        creep.moveTo(damagedRamparts[0]);
-        creep.repair(damagedRamparts[0]);
-        return;
-    }
+    // var structures = creep.room.find(Game.STRUCTURES);
+    // var damagedRamparts = [];
+    //
+    // for (var index in structures) {
+    //     var structure = structures[index];
+    //     if (structure.structureType == 'rampart' && structure.hits < (structure.hitsMax - 50)) {
+    //         damagedRamparts.push(structure);
+    //     }
+    // }
+    //
+    // damagedRamparts.sort(function(a, b) {
+    //     return (a.hits - b.hits);
+    // });
+    //
+    // if (damagedRamparts.length > 0) {
+    //     creep.moveTo(damagedRamparts[0]);
+    //     creep.repair(damagedRamparts[0]);
+    //     return;
+    // }
 
     //Next we're going to look for general buildings that have less than 50% health, and we'll go to repair those.
     //We set it at 50%, because we don't want builders abandoning their duty every time a road gets walked on
     var halfBroken = creep.room.find(Game.STRUCTURES);
     var toRepair = [];
-    for (var index in halfBroken)
-        if ((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5)
+    for (var index in halfBroken) {
+        if ((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5) {
             toRepair.push(halfBroken[index]);
+        }
+    }
 
     if (toRepair.length > 0) {
         var structure = toRepair[0];

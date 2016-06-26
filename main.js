@@ -77,11 +77,11 @@ if(builders.length < 6) {
     console.log('Constructing an builder');
 }
 
-// Spawn repairs
-// if(repairs.length < 2) {
-//     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'repair'});
-//     console.log('Constructing an repair dude');
-// }
+Spawn repairs
+if(repairs.length < 2) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], null, {role: 'repair'});
+    console.log('Constructing an repair dude');
+}
 
 // // Spawn archers
 // if(archers.length < 1) {

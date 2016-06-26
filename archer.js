@@ -1,7 +1,7 @@
 // Basic Archer
 module.exports = function (creep) {
 	var target = creep.pos.findClosestByPath(Game.HOSTILE_CREEPS);
-	if(target && creep.hits > creep.hitsMax - 500 /* no more attack */) {
+	if(target) {
 		creep.moveTo(target);
 		creep.rangedAttack(target);
 	} else {

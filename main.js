@@ -6,7 +6,7 @@ var healer = require('healer');
 var upgrader = require('upgrader');
 var archer = require('archer');
 
-//Unit 
+//Unit
 var harvesters = [];
 var guards = [];
 var builders = [];
@@ -17,6 +17,7 @@ var archers = [];
 /* --------------------------------------------------------------------------------------SPAWNER STUFF--------------------------------------------------------------------------------*/
 //Clear dead creeps from memory
 console.log('------------------------------Gravedigger--------------------------------------------------------');
+console.log(Game.HOSTILE_CREEPS);
 for(var name in Memory.creeps) {
     if(!Game.creeps[name]) {
         delete Memory.creeps[name];
@@ -82,16 +83,16 @@ if(builders.length < 8) {
 //     if (guards.length < 4) {
 //         Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
 //         console.log('Constructing an guard');
-//     } 
+//     }
 //     else if (healers.length / guards.length < 0.5) {
 //         Game.spawns.Spawn1.createCreep([HEAL, MOVE], null, {role: 'healer'});
 //         console.log('Constructing an healer');
-//     } 
+//     }
 //     else {
 //         Game.spawns.Spawn1.createCreep([TOUGH, MOVE, ATTACK, MOVE, ATTACK], null, {role: 'guard'});
 //         console.log('Constructing an guard because maxed we hit 50% of guard to healer ratio');
 //     }
-// } 
+// }
 
 console.log('\n');
 /* ---------------------------------------------------------------------------------------CREEP BAHAVIOR ---------------------------------------------------------------------*/
@@ -116,13 +117,12 @@ for(var name in Game.creeps) {
 	if(creep.memory.role == 'healer') {
 	    healer(creep);
     }
-    
+
     if(creep.memory.role == 'upgrader') {
 	    upgrader(creep);
     }
-    
+
     if(creep.memory.role == 'archer') {
 	    archer(creep);
     }
 }
-

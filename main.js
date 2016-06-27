@@ -72,7 +72,7 @@ if(upgraders.length < 4) {
     console.log('Constructing an upgrader');
 }
 // Spawn builders
-if(builders.length <4) {
+if(builders.length <3) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'builder'});
     console.log('Constructing an builder');
 }
@@ -141,3 +141,19 @@ for(var name in Game.creeps) {
 	    repair(creep);
     }
 }
+
+// Tower
+    var tower = Game.getObjectById('5771849fccd3a36a7999dffe');
+    if(tower) {
+        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) => structure.hits < structure.hitsMax
+        });
+        if(closestDamagedStructure) {
+            tower.repair(closestDamagedStructure);
+        }
+
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }

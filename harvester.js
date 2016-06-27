@@ -5,7 +5,7 @@ module.exports = function (creep) {
         var sources = creep.room.find(FIND_SOURCES);
         if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
             creep.moveTo(sources[0]);
-            console.log(creep.name + ': Time to get paid');
+            console.log(creep.name + ': Harvester is gathering');
         }
 
     }
@@ -26,7 +26,7 @@ module.exports = function (creep) {
             }
         }
         if(!targets.length){
-          console.log(creep.name + ': Out of storage space for energy');
+          console.log(creep.name + ': Harvester is idling');
           creep.moveTo(Game.spawns.Spawn1);
         }
     }

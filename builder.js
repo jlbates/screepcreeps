@@ -11,8 +11,8 @@ module.exports = function (creep) {
         console.log(creep.name + ': Building');
     }
     //If creep is at carry capacity find the next construction site and build
+		var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
     if(creep.memory.building) {
-        var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
         if(targets.length) {
             if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[0]);
@@ -20,6 +20,11 @@ module.exports = function (creep) {
             }
         }
     }
+		// Idle behavior
+		if(creep.carry.energy == creep.carry.energyCapacity && !targets.length){
+			console.log(creep.name + ': Builder is idling');
+			creep.moveTo(Game.spawns.Spawn1);
+		}
     //If creep isn't at max energy, go farm some.
     else {
         var sources = creep.room.find(FIND_SOURCES);

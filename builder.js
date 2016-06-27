@@ -20,12 +20,6 @@ module.exports = function (creep) {
             }
         }
     }
-    if(!targets.length || targets.length == 0 && creep.carry.energy != 0){
-        if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(creep.room.controller);
-            console.log(creep.name + ': Builder is upgrading the controller');
-        }
-    }
 
     //If creep isn't at max energy, go farm some.
     else {

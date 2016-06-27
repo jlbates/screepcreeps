@@ -15,6 +15,7 @@ module.exports = function(creep) {
                 return (structure.structureType == STRUCTURE_WALL ||
                         structure.structureType == STRUCTURE_CONTAINER ||
                         structure.structureType == STRUCTURE_STORAGE ||
+                        structure.structureType == STRUCTURE_ROAD ||
                         structure.structureType == STRUCTURE_TOWER) && structure.hits < structure.hitsMax;
             }
         });

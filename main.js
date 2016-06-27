@@ -6,6 +6,7 @@ var healer = require('healer');
 var upgrader = require('upgrader');
 var archer = require('archer');
 var repair = require('repair');
+var mover = require('repair');
 
 //Unit
 var harvesters = [];
@@ -15,6 +16,7 @@ var healers = [];
 var upgraders = [];
 var archers = [];
 var repairs = [];
+var movers = [];
 
 /* --------------------------------------------------------------------------------------SPAWNER STUFF--------------------------------------------------------------------------------*/
 //Clear dead creeps from memory
@@ -52,6 +54,9 @@ for (var i in Game.creeps) {
     if(Game.creeps[i].memory.role == 'repair') {
         repairs.push(Game.creeps[i]);
     }
+    if(Game.creeps[i].memory.role == 'mover') {
+        movers.push(Game.creeps[i]);
+    }
 }
 
 
@@ -74,13 +79,19 @@ if(upgraders.length < 4) {
 // Spawn builders
 if(builders.length <3) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'builder'});
-    console.log('Constructing an builder');
+    console.log('Constructing a builder');
 }
 
 //Spawn repairs
 if(repairs.length < 4) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'repair'});
-    console.log('Constructing an repair dude');
+    console.log('Constructing a repair dude');
+}
+
+//Spawn movers
+if(movers.length < 1) {
+    Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'mover'});
+    console.log('Constructing a mover');
 }
 
 // // Spawn archers
@@ -140,17 +151,21 @@ for(var name in Game.creeps) {
     if(creep.memory.role == 'repair') {
 	    repair(creep);
     }
+
+    if(creep.memory.role == 'mover') {
+	    mover(creep);
+    }
 }
 
 // Tower
     var tower = Game.getObjectById('5771849fccd3a36a7999dffe');
     if(tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
+        // var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+        //     filter: (structure) => structure.hits < structure.hitsMax
+        // });
+        // if(closestDamagedStructure) {
+        //     tower.repair(closestDamagedStructure);
+        // }
 
         var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         if(closestHostile) {

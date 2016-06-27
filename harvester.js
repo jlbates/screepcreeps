@@ -22,8 +22,12 @@ module.exports = function (creep) {
         if(targets.length > 0) {
             if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[0]);
-                console.log(creep.name + ': Returning to base');
+                console.log(creep.name + ': Returning to base to unload resources');
             }
+        }
+        if(!targets.length){
+          console.log(creep.name + ': Out of storage space for energy');
+          creep.moveTo(Game.spawns.Spawn1);
         }
     }
 }

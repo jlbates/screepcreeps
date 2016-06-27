@@ -67,7 +67,7 @@ if(harvesters.length < 7) {
     console.log('Constructing an harvester');
 }
 // Spawn upgraders
-if(upgraders.length < 2) {
+if(upgraders.length < 4) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'upgrader'});
     console.log('Constructing an upgrader');
 }
@@ -78,7 +78,7 @@ if(builders.length <4) {
 }
 
 //Spawn repairs
-if(repairs.length < 2) {
+if(repairs.length < 4) {
     Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], null, {role: 'repair'});
     console.log('Constructing an repair dude');
 }

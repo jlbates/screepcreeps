@@ -13,8 +13,8 @@ module.exports = function(room) {
 			assignments: roomMem.assignments,
 			sources: roomMem.sources
 		};
-	roomData.bulidings.spawns = room.find(FIND_MY_SPAWNS);
-	roomData.buildings.emptyContainers = find(FIND_STRUCTURES, {
+	roomData.buildings.spawns = room.find(FIND_MY_SPAWNS);
+	roomData.buildings.emptyContainers = room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return (structure.structureType == STRUCTURE_EXTENSION ||
                     structure.structureType == STRUCTURE_SPAWN ||
@@ -23,7 +23,7 @@ module.exports = function(room) {
         }
     });
     roomData.buildings.construction = room.find(FIND_MY_CONSTRUCTION_SITES);
-    roomData.buildings.repairs = find(FIND_STRUCTURES, {
+    roomData.buildings.repairs = room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return structure.hits < structure.hitsMax;
         }

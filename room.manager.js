@@ -1,4 +1,7 @@
 module.exports = function(room) {
+	//initialize memory for room if not yet initialized
+	require('room.init')(room);
+
 	const
 		roleAssigner = require('role.assigner'),
 		populationManager = require('population.manager'),
